@@ -1,0 +1,7 @@
+{
+  "rss": [
+    "https://www.iso.org/contents/shared/rss/latest-standards.rss",
+    "https://quality.eqms.co.uk/blog/rss.xml",
+    "http://localhost:8003/feed?unit=hour"
+  ]
+}
