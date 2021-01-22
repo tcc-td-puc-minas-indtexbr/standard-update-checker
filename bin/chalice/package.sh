@@ -1,0 +1,1 @@
+chalice package ./dist

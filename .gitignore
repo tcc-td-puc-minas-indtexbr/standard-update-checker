@@ -3,3 +3,8 @@ vendor
 venv
 *.pyc
 */**/__pycache__/*
+/.infraestructure/.terraform/
+/dist/
+/.infraestructure/.terraform.lock.hcl
+/.infraestructure/terraform.tfstate
+/.infraestructure/terraform.tfstate.backup
