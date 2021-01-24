@@ -9,3 +9,6 @@ venv
 /.infraestructure/terraform.tfstate
 /.infraestructure/terraform.tfstate.backup
 /.chalice/deployments/
+/target/unit/coverage_html/*
+/.coverage
+/target/unit/report.xml

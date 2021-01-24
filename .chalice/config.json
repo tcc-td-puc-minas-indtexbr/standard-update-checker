@@ -15,16 +15,6 @@
           "lambda_timeout": 120
         }
       },
-      "manage_iam_role": false,
-      "iam_role_arn": "arn:aws:iam::xyz:role/xyz-lambda",
-      "security_group_ids": [
-        "sg-xyz"
-      ],
-      "subnet_ids": [
-        "subnet-xyz"
-      ],
-      "layers": [
-      ],
       "environment_variables": {
         "APP_ENV": "production",
         "DEBUG": "false",
@@ -40,16 +30,6 @@
           "lambda_timeout": 120
         }
       },
-      "manage_iam_role": false,
-      "iam_role_arn": "arn:aws:iam::xyz:role/xyz-lambda",
-      "security_group_ids": [
-        "sg-xyz"
-      ],
-      "subnet_ids": [
-        "subnet-xyz"
-      ],
-      "layers": [
-      ],
       "environment_variables": {
         "APP_ENV": "staging",
         "DEBUG": "false",
@@ -65,17 +45,6 @@
           "lambda_timeout": 120
         }
       },
-      "manage_iam_role": false,
-      "iam_role_arn": "arn:aws:iam::xyz:role/xyz-lambda",
-      "security_group_ids": [
-        "sg-xyz"
-      ],
-      "subnet_ids": [
-        "subnet-xyz",
-        "subnet-06c19f0bb6a52e15c"
-      ],
-      "layers": [
-      ],
       "environment_variables": {
         "APP_ENV": "development",
         "DEBUG": "true",
