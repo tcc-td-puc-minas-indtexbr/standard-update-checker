@@ -19,7 +19,10 @@ phases:
   build:
     commands:
       - echo Installing all requirements
-#      - pip install -r requirements.txt
+      - python3 --version
+      - pip --version
+      - pip3 --version
+  #      - pip install -r requirements.txt
 #      - pip install -r requirements-vendor.txt
   post_build:
     commands:
