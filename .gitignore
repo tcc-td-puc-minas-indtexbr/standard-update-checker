@@ -8,3 +8,4 @@ venv
 /.infraestructure/.terraform.lock.hcl
 /.infraestructure/terraform.tfstate
 /.infraestructure/terraform.tfstate.backup
+/.chalice/deployments/
