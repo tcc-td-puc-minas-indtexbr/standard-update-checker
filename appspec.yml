@@ -4,9 +4,9 @@ Resources:
       Type: AWS::Lambda::Function
       Properties:
         Name: "standard-update-checker"
-        Alias: "standard-update-checker-production"
+        Alias: "production"
         CurrentVersion: "1"
-        TargetVersion: "2"
-Hooks:
-  - BeforeAllowTraffic: "LambdaFunctionToValidateBeforeTrafficShift"
-  - AfterAllowTraffic: "LambdaFunctionToValidateAfterTrafficShift"
+        TargetVersion: "1"
+#Hooks:
+#  - BeforeAllowTraffic: "LambdaFunctionToValidateBeforeTrafficShift"
+#  - AfterAllowTraffic: "LambdaFunctionToValidateAfterTrafficShift"
