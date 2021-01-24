@@ -40,6 +40,6 @@ phases:
 #    file-format: 'CLOVERXML'
 artifacts:
   files:
-    - appspec.yml
-    - ./dist/deployment.zip
-    - ./dist/sam.json
+    - 'appspec.yml'
+    - './dist/deployment.zip'
+    - './dist/sam.json'
