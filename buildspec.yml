@@ -1,0 +1,39 @@
+version: 0.2
+#env:
+#  shell: shell-tag
+#  variables:
+#    key: "value"
+#    key: "value"
+#  parameter-store:
+#    key: "value"
+#    key: "value"
+#  exported-variables:
+#    - variable
+#    - variable
+#  secrets-manager:
+#    key: secret-id:json-key:version-stage:version-id
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+#  pre_build:
+#    run-as:root
+#    commands:
+#      - echo Nothing for while
+  build:
+    commands:
+      - echo Installing all requirements
+      - pip install -r ./${projectName}/requirements.txt
+      - pip install -r ./${projectName}/requirements-vendor.txt
+ post_build:
+    commands:
+      - echo Installing test requirements
+      - pip install -r ./${projectName}/requirements-tests.txt
+      - echo Running unit testes
+      - ./bin/tests/unit-coverage-no-report-html.sh
+#      - echo Unit tests disabled for while
+reports:
+  PHPUnitReports:
+    files:
+      - 'target/unit/report.xml'
+
