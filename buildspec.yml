@@ -30,9 +30,14 @@ phases:
       - pip install -r ./requirements-tests.txt
       - echo Running unit testes
       - ./bin/tests/unit-coverage-no-report-html.sh
-      - echo Unit tests disabled for while
+      - echo Generating package file
+      - ./bin/chalice/package.sh
+      -
 reports:
   UnitTestsReports:
     files:
       - 'target/unit/report.xml'
-
+artifacts:
+  files:
+    - './dist/deployment.zip'
+    - './dist/sam.json'
