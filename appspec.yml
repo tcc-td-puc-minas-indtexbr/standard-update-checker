@@ -1,10 +1,10 @@
 version: 0.0
 Resources:
-  - myLambdaFunction:
+  - MyFunction:
       Type: AWS::Lambda::Function
       Properties:
         Name: "standard-update-checker"
-        Alias: "standard-update-checker-alias"
+        Alias: "standard-update-checker-production"
         CurrentVersion: "1"
         TargetVersion: "2"
 Hooks:
