@@ -16,3 +16,4 @@ venv
 /target/unit/clover.xml
 sam.json
 deployment.zip
+/packaged.yml
