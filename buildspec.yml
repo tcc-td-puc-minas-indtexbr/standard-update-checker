@@ -1,8 +1,8 @@
 version: 0.2
-#env:
+env:
 #  shell: shell-tag
-#  variables:
-#    key: "value"
+  variables:
+    S3_BUCKET: "standard-update-checker-builds"
 #    key: "value"
 #  parameter-store:
 #    key: "value"
@@ -33,7 +33,7 @@ phases:
     finally:
        - echo Generating package file
        - ./bin/chalice/package.sh
-       - aws cloudformation package --template-file sam.json --s3-bucket standard-update-checker-builds --output-template-file packaged.yml
+       - aws cloudformation package --template-file sam.json --s3-bucket $S3_BUCKET --output-template-file packaged.yml
 #reports:
 #  UnitTestsReports:
 #    files:
@@ -41,6 +41,7 @@ phases:
 #    file-format: 'CLOVERXML'
 artifacts:
   files:
+    - sam.json
     - packaged.yml
 #    - ./dist/deployment.zip
 #    - ./dist/sam.json
