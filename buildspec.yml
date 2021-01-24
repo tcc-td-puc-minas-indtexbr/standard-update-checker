@@ -43,6 +43,6 @@ artifacts:
   files:
     - sam.json
     - packaged.yml
-    - appspec.yml
+    - appspec.yaml
 #    - ./dist/deployment.zip
 #    - ./dist/sam.json
