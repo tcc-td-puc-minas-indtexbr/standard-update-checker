@@ -10,6 +10,8 @@
   "memory": 128,
   "stages": {
     "production": {
+      "manage_iam_role": false,
+      "iam_role_arn": "arn:aws:iam::821579492372:role/lambda_role",
       "lambda_functions": {
         "handle_sqs_message": {
           "lambda_timeout": 120
@@ -25,6 +27,8 @@
       }
     },
     "staging": {
+      "manage_iam_role": false,
+      "iam_role_arn": "arn:aws:iam::821579492372:role/lambda_role",
       "lambda_functions": {
         "handle_sqs_message": {
           "lambda_timeout": 120
@@ -40,6 +44,8 @@
       }
     },
     "dev": {
+      "manage_iam_role": false,
+      "iam_role_arn": "arn:aws:iam::821579492372:role/lambda_role",
       "lambda_functions": {
         "handle_sqs_message": {
           "lambda_timeout": 120
