@@ -13,3 +13,4 @@ venv
 /target/unit/coverage_html/*
 /.coverage
 /target/unit/report.xml
+/target/unit/clover.xml

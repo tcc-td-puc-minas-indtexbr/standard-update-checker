@@ -1,4 +1,5 @@
 unittest-data-provider
 coverage
+coverage2clover
 mock
 boto3
