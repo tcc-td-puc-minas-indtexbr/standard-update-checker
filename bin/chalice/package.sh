@@ -1,1 +1,2 @@
-chalice package ./dist
+#chalice package ./dist
+chalice package .

@@ -33,7 +33,7 @@ phases:
     finally:
        - echo Generating package file
        - ./bin/chalice/package.sh
-       - aws cloudformation package --template-file ./dist/sam.json --s3-bucket standard-update-checker-builds --output-template-file packaged.yml
+       - aws cloudformation package --template-file sam.json --s3-bucket standard-update-checker-builds --output-template-file packaged.yml
 #reports:
 #  UnitTestsReports:
 #    files:
