@@ -1,6 +1,6 @@
-locals {
-  lambda_filename = "../dist/deployment.zip"
-}
+//locals {
+//  lambda_filename = "../dist/deployment.zip"
+//}
 
 resource "aws_iam_role_policy" "lambda_policy" {
   name = "lambda_policy"
@@ -15,7 +15,6 @@ resource "aws_iam_role" "lambda_role" {
   assume_role_policy = "${file("policies/iam/aws_lambda_role.json")}"
 }
 
-//TODO ver depois o chalice package resolve
 //data "archive_file" "lambda_file" {
 //  output_path = "${local.lambda_filename}"
 //  source_dir = ""
@@ -23,9 +22,9 @@ resource "aws_iam_role" "lambda_role" {
 //}
 
 resource "aws_lambda_function" "test_lambda" {
-  function_name = "standard-update-checker"
-  handler = "app.index"
+  function_name = "${var.aws_lambda_function_name}"
+  handler = "${var.aws_lambda_handler}"
   role = "${aws_iam_role.lambda_role.arn}"
-  runtime = "python3.8"
-  filename = "${local.lambda_filename}"
+  runtime = "${var.aws_lambda_runtime}"
+  filename = "${var.aws_lambda_filename}"
 }
