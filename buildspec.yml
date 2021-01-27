@@ -2,16 +2,8 @@ version: 0.2
 env:
 #  shell: shell-tag
   variables:
-    S3_BUCKET: "standard-update-checker-builds"
-#    key: "value"
-#  parameter-store:
-#    key: "value"
-#    key: "value"
-#  exported-variables:
-#    - variable
-#    - variable
-#  secrets-manager:
-#    key: secret-id:json-key:version-stage:version-id
+    S3_BUCKET: "generic-lambda-builds"
+    PROJECT_NAME: "standard-update-checker"
 phases:
   install:
     runtime-versions:
@@ -33,7 +25,7 @@ phases:
     finally:
        - echo Generating package file
        - ./bin/chalice/package.sh
-       - aws cloudformation package --template-file sam.json --s3-bucket $S3_BUCKET --output-template-file packaged.yml
+       - aws cloudformation package --template-file sam.json --s3-bucket $S3_BUCKET --s3-prefix $PROJECT_NAME --output-template-file packaged.yml
 #reports:
 #  UnitTestsReports:
 #    files:
