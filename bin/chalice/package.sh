@@ -1,2 +1,2 @@
 #chalice package ./dist
-chalice package .
+chalice package . $1 $2

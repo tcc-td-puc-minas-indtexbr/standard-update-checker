@@ -24,7 +24,7 @@ phases:
 #      - ./bin/tests/unit-coverage-no-report-html.sh
     finally:
        - echo Generating package file
-       - ./bin/chalice/package.sh
+       - ./bin/chalice/package.sh --stage production
        - aws cloudformation package --template-file sam.json --s3-bucket $S3_BUCKET --s3-prefix $PROJECT_NAME --output-template-file packaged.yml
 #reports:
 #  UnitTestsReports:
