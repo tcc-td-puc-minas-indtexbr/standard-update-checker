@@ -23,6 +23,8 @@ phases:
 #      - echo Running unit testes
 #      - ./bin/tests/unit-coverage-no-report-html.sh
     finally:
+       - echo Replacing account variable of .chalice/config.json
+       - sed -i "s/${AWS::AccountId}/${ACCOUNT_ID}/g" .chalice/config.json
        - echo Generating package file
        - ./bin/chalice/package.sh --stage production
        - aws cloudformation package --template-file sam.json --s3-bucket $S3_BUCKET --s3-prefix $PROJECT_NAME --output-template-file packaged.yml
