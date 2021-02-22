@@ -1,5 +1,5 @@
 provider "aws" {
-    profile =                 "tcc-td-puc-minas-admin"
+    profile =                 var.aws_profile
     shared_credentials_file = "~/.aws/credentials"
-    region =                  "${var.aws_region}"
+    region =                  var.aws_region
 }
