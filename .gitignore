@@ -27,3 +27,5 @@ vendor/*
 /docker/aws/credentials
 /target/dynamodb-local.tgz
 /target/dynamodb-local/
+*_us-east-2.db
+*_sa-east-1.db
