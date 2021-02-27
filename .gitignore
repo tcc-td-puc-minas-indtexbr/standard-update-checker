@@ -1,5 +1,4 @@
 .idea
-vendor
 venv
 *.pyc
 */__pycache__/*
@@ -17,3 +16,12 @@ venv
 sam.json
 deployment.zip
 /packaged.yml
+
+# mantem a vendor
+!vendor
+# ignora os demais arquivos
+vendor/*
+# mantem essa pasta
+!/vendor/public
+!/vendor/datasources
+/docker/aws/credentials

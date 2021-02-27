@@ -1,0 +1,20 @@
+Outputs:
+  StandardUpdatesTableName:
+    Value:
+      Ref: StandardUpdatesTable
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'Sigo Standard Updates Table'
+Resources:
+  StandardUpdatesTable:
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: uuid
+        AttributeType: S
+      KeySchema:
+      - AttributeName: uuid
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::DynamoDB::Table

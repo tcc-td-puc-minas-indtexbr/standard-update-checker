@@ -11,16 +11,6 @@ services:
       - tcc-td-network
     volumes:
       - ./:/app
-  loren-rss:
-    build:
-      context: ./lorem-rss/
-      dockerfile: ./Dockerfile
-    ports:
-      - 8003:5000
-    networks:
-      - tcc-td-network
-#    volumes:
-#      - ./:/app
 
 #  elk:
 #    build:

@@ -36,12 +36,14 @@ def validate_fields(fields, entity_fields):
                 filtered.append(validated)
     return filtered
 
-def create_response(body=None, status_code=None):
+def create_response(body=None, status_code=None, headers=None):
+    if not headers:
+        headers = CUSTOM_DEFAULT_HEADERS
     if isinstance(body, Exception):
         if helper.has_attr(body, 'STATUS_CODE'):
             status_code = body.STATUS_CODE
         else:
             status_code = 400
-        return Response(body=str(body), status_code=status_code, headers=CUSTOM_DEFAULT_HEADERS)
+        return Response(body=str(body), status_code=status_code, headers=headers)
     else:
-        return Response(body=body, status_code=status_code, headers=CUSTOM_DEFAULT_HEADERS)
+        return Response(body=body, status_code=status_code, headers=headers)

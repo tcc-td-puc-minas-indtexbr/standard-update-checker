@@ -2,3 +2,8 @@ python-dotenv
 jsonformatter
 requests
 pytz
+apispec
+marshmallow
+markdown
+pyyaml
+xmltodict

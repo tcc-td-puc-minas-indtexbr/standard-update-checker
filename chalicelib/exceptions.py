@@ -84,7 +84,7 @@ class DatabaseException(ApiException):
         :param (MessagesEnum) message_enum:
         :param errors:
         """
-        super(ApiException, self).__init__(message_enum.message, errors)
+        super(ApiException, self).__init__(message_enum, errors)
         self.code = message_enum.code
         self.label = message_enum.label
         self.message = message_enum.message
@@ -97,7 +97,7 @@ class FilterException(ApiException):
         :param (MessagesEnum) message_enum:
         :param errors:
         """
-        super(ApiException, self).__init__(message_enum.message, errors)
+        super(ApiException, self).__init__(message_enum, errors)
         self.code = message_enum.code
         self.label = message_enum.label
         self.message = message_enum.message
@@ -110,7 +110,7 @@ class ValidationException(ApiException):
         :param (MessagesEnum) message_enum:
         :param errors:
         """
-        super(ApiException, self).__init__(message_enum.message, errors)
+        super(ApiException, self).__init__(message_enum, errors)
         self.code = message_enum.code
         self.label = message_enum.label
         self.message = message_enum.message

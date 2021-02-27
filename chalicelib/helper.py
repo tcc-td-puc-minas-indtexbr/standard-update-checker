@@ -1,13 +1,27 @@
 import json
 import os
+import sys
 from datetime import datetime
 from enum import Enum
 
 import pytz
 
+from chalicelib.boot import ROOT_DIR
 from chalicelib.logging import get_logger
 
 TZ_AMERICA_SAO_PAULO = 'America/Sao_Paulo'
+
+
+def open_vendor_file(filename, mode):
+    directories = [
+        '.',
+        ROOT_DIR + './vendor',
+        '/opt/python/lib/python%s.%s/site-packages' % sys.version_info[:2]
+    ]
+    for dirname in directories:
+        full_path = os.path.join(dirname, filename)
+        if os.path.isfile(full_path):
+            return open(full_path, mode=mode)
 
 
 def empty(where):
