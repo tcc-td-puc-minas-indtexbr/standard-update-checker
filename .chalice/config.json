@@ -20,7 +20,10 @@
       "environment_variables": {
         "APP_ENV": "production",
         "DEBUG": "false",
-        "LOG_LEVEL": "info"
+        "LOG_LEVEL": "info",
+        "API_SERVER": "https://services.hagatus.com.br/sigo-standard-update-checker",
+        "API_SERVER_DESCRIPTION": "Production server",
+        "DYNAMODB_TABLE_NAME": "standard-update-checker-dynamodb-StandardUpdatesTable-2QG9HALELHWY"
       },
       "tags": {
         "Env": "production"
@@ -37,7 +40,10 @@
       "environment_variables": {
         "APP_ENV": "staging",
         "DEBUG": "false",
-        "LOG_LEVEL": "info"
+        "LOG_LEVEL": "info",
+        "API_SERVER": "https://services.hagatus.com.br/sigo-standard-update-checker",
+        "API_SERVER_DESCRIPTION": "Production server",
+        "DYNAMODB_TABLE_NAME": "standard-update-checker-dynamodb-StandardUpdatesTable-2QG9HALELHWY"
       },
       "tags": {
         "Env": "staging"
@@ -54,7 +60,11 @@
       "environment_variables": {
         "APP_ENV": "development",
         "DEBUG": "true",
-        "LOG_LEVEL": "info"
+        "LOG_LEVEL": "info",
+        "API_SERVER": "https://services.hagatus.com.br/sigo-standard-update-checker",
+        "API_SERVER_DESCRIPTION": "Production server",
+        "DYNAMODB_TABLE_NAME": "standard-update-checker-dynamodb-StandardUpdatesTable-2QG9HALELHWY",
+        "AWS_PROFILE": "sigo-lambdas"
       }
     }
   }

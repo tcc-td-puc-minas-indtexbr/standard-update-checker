@@ -1,1 +1,3 @@
- aws cloudformation package --template-file sam.json --s3-bucket standard-update-checker-builds --output-template-file packaged.yml --profile tcc-td-puc-minas-admin
+echo "AWS Account: $1"
+echo "cloudformation deploy --template-file packaged.yml --stack-name standard-update-checker-stack --region sa-east-1 --profile tcc-td-puc-minas-admin"
+aws cloudformation deploy --template-file packaged.yml --stack-name standard-update-checker-stack --region sa-east-1 --profile tcc-td-puc-minas-admin

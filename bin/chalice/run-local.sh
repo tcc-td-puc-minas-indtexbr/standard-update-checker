@@ -9,4 +9,6 @@ if [ -z "$PORT" ]
 then
   PORT=8000
 fi
-chalice local --port $PORT
+#chalice local --port $PORT
+#chalice local --no-autoreload
+chalice local $1 $2
