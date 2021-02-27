@@ -1,0 +1,47 @@
+[
+  {
+    "uuid": "067d914c-cb19-4f3f-8755-584e0eafe344",
+    "identification": "ISO 9001:2015",
+    "publication_date": "2015-09-30",
+    "title": "Sistemas de gestão da qualidade - Requisitos",
+    "description": "This document reached stage 30.60 on 2021-02-26, TC/SC: ISO/TC 42, ICS: 37.040.20",
+    "link": "http://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/03/19/31944.html",
+    "synchronized": true
+  },
+  {
+    "uuid": "fd214a67-1ad9-4152-87b8-b1e0f7d12cb9",
+    "identification": "ISO/DTS 18950.2",
+    "publication_date": "2021-02-26",
+    "title": "ISO/DTS 18950.2 - Imaging materials — Reflection colour photographic images — Indoor light stability specifications for museum display",
+    "description": "This document reached stage 30.60 on 2021-02-26, TC/SC: ISO/TC 42, ICS: 37.040.20",
+    "link": "http://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/03/19/31944.html",
+    "synchronized": false
+  },
+  {
+    "uuid": "c653d21d-452f-4e70-9ce0-8a4266d6a42a",
+    "identification": "ISO 1628-1:2009",
+    "publication_date": "2021-02-26",
+    "title": "ISO 1628-1:2009 - Plastics — Determination of the viscosity of polymers in dilute solution using capillary viscometers — Part 1: General principles",
+    "description": "This document reached stage 30.60 on 2021-02-26, TC/SC: ISO/TC 42, ICS: 37.040.20",
+    "link": "http://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/03/19/31944.html",
+    "synchronized": false
+  },
+  {
+    "uuid": "0179f7aa-0da7-48c5-aae5-f51ee75b0901",
+    "description": "This document reached stage 40.20 on 2021-01-26, TC/SC: ISO/TC 256, ICS: 87.060.10",
+    "identification": "ISO 14040:2006",
+    "link": "http://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/07/47/74764.html",
+    "publication_date": "",
+    "synchronized": "false",
+    "title": "ISO 14040:2006 - Determination of the silanol group content on the surface of fumed silica — Reaction gas chromatographic method"
+  },
+  {
+    "uuid": "13af6b3e-6b29-422b-8800-dbca0c770b13",
+    "description": "This document reached stage 40.20 on 2021-01-26, TC/SC: ISO/TC 256, ICS: 87.060.10",
+    "identification": "ISO 14001:2014",
+    "link": "http://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/07/47/74764.html",
+    "publication_date": "",
+    "synchronized": "false",
+    "title": "ISO 14001:2014 - Determination of the silanol group content on the surface of fumed silica — Reaction gas chromatographic method"
+  }
+]

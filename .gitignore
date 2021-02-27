@@ -25,3 +25,5 @@ vendor/*
 !/vendor/public
 !/vendor/datasources
 /docker/aws/credentials
+/target/dynamodb-local.tgz
+/target/dynamodb-local/
