@@ -160,11 +160,6 @@ def updates_check():
         response.set_exception(api_ex)
 
     return response.get_response(status_code)
-    # return http_helper.create_response(body=body, status_code=200)
-
-    # status_code = 500
-    # data = MessagesEnum.METHOD_NOT_IMPLEMENTED_ERROR.message
-    # return http_helper.create_response(body=data, status_code=status_code)
 
 
 @app.route('/v1/updates_sync', methods=['GET'], cors=True)
@@ -180,7 +175,28 @@ def updates_sync():
                                 schema: UpdatesSyncResponseSchema
 
             """
-    pass
+    service = UpdateCheckerService()
+    request = ApiRequest().parse_request(app)
+    response = ApiResponse(request)
+    status_code = 200
+
+    try:
+
+        raise ApiException(MessagesEnum.METHOD_NOT_IMPLEMENTED_ERROR)
+
+    except Exception as err:
+        logger.error(err)
+
+        if isinstance(err, ApiException):
+            api_ex = err
+            status_code = 404
+        else:
+            api_ex = ApiException(MessagesEnum.LIST_ERROR)
+            status_code = 500
+
+        response.set_exception(api_ex)
+
+    return response.get_response(status_code)
 
 
 @app.schedule('rate(1 day)')
