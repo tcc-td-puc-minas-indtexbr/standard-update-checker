@@ -10,6 +10,7 @@ from chalicelib.boot import register_vendor
 from chalicelib.helper import open_vendor_file
 from chalicelib.http_helper import CUSTOM_DEFAULT_HEADERS
 from chalicelib.openapi import spec, generate_openapi_yml
+from chalicelib.services.v1.standard_updates_service import StandardUpdatesService
 
 register_vendor()
 
@@ -117,7 +118,95 @@ def docs():
     return http_helper.create_response(body=html, status_code=200, headers=headers)
 
 
-@app.route('/v1/updates_check', methods=['GET'], cors=True)
+@app.route('/v1/updates', methods=['GET'], cors=True)
+def updates_list():
+    """
+            get:
+                summary: List the updates
+                responses:
+                    200:
+                        description: Success response
+                        content:
+                            application/json:
+                                schema: StandardUpdatesListResponseSchema
+
+            """
+
+    service = StandardUpdatesService()
+    request = ApiRequest().parse_request(app)
+    response = ApiResponse(request)
+    status_code = 200
+
+    try:
+        data = service.list(request)
+        total = service.count(request)
+
+        response.set_data(data)
+        response.set_total(total)
+
+    except Exception as err:
+        logger.error(err)
+
+        if isinstance(err, ApiException):
+            api_ex = err
+            status_code = 404
+        else:
+            api_ex = ApiException(MessagesEnum.LIST_ERROR)
+            status_code = 500
+
+        response.set_exception(api_ex)
+
+    return response.get_response(status_code)
+
+
+@app.route('/v1/updates/{uuid}', methods=['GET'], cors=True)
+def updates_get(uuid):
+    """
+    get:
+        summary: Get Standard Update
+        parameters:
+            - in: path
+              name: uuid
+              description: "Standard Update uuid"
+              required: true
+              schema:
+                type: string
+                format: UUID
+        responses:
+            200:
+                description: Success response
+                content:
+                    application/json:
+                        schema: StandardUpdatesGetResponseSchema
+
+            """
+
+    service = StandardUpdatesService()
+    request = ApiRequest().parse_request(app)
+    response = ApiResponse(request)
+    status_code = 200
+
+    try:
+
+        data = service.get(request, uuid)
+        response.set_data(data)
+
+    except Exception as err:
+        logger.error(err)
+
+        if isinstance(err, ApiException):
+            api_ex = err
+            status_code = 404
+        else:
+            api_ex = ApiException(MessagesEnum.FIND_ERROR)
+            status_code = 500
+
+        response.set_exception(api_ex)
+
+    return response.get_response(status_code)
+
+
+@app.route('/v1/updates/check', methods=['GET'], cors=True)
 def updates_check():
     """
             get:
@@ -162,7 +251,7 @@ def updates_check():
     return response.get_response(status_code)
 
 
-@app.route('/v1/updates_sync', methods=['GET'], cors=True)
+@app.route('/v1/updates/sync', methods=['GET'], cors=True)
 def updates_sync():
     """
     get:
@@ -217,10 +306,10 @@ def every_hour(event):
 # doc
 spec.path(view=ping, path="/alive", operations=yaml.safe_load(alive.__doc__))
 spec.path(view=ping, path="/ping", operations=yaml.safe_load(ping.__doc__))
-spec.path(view=updates_check, path="/v1/updates_check", operations=yaml.safe_load(updates_check.__doc__))
-spec.path(view=updates_sync, path="/v1/updates_sync", operations=yaml.safe_load(updates_sync.__doc__))
-# spec.path(view=standard_list, path="/v1/standard", operations=yaml.safe_load(standard_list.__doc__))
-# spec.path(view=standard_create, path="/v1/standard", operations=yaml.safe_load(standard_create.__doc__))
+spec.path(view=updates_check, path="/v1/updates/check", operations=yaml.safe_load(updates_check.__doc__))
+spec.path(view=updates_sync, path="/v1/updates/sync", operations=yaml.safe_load(updates_sync.__doc__))
+spec.path(view=updates_list, path="/v1/updates", operations=yaml.safe_load(updates_list.__doc__))
+spec.path(view=updates_get, path="/v1/updates/{uuid}", operations=yaml.safe_load(updates_get.__doc__))
 # spec.path(view=standard_get, path="/v1/standard/{uuid}", operations=yaml.safe_load(standard_get.__doc__))
 # spec.path(view=standard_update, path="/v1/standard/{uuid}", operations=yaml.safe_load(standard_update.__doc__))
 # spec.path(view=standard_delete, path="/v1/standard/{uuid}", operations=yaml.safe_load(standard_delete.__doc__))

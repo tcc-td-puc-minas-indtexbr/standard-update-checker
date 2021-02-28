@@ -15,7 +15,6 @@ class StandardUpdatesSchema(Schema):
 
 
 class UpdatesCheckResponseSchema(Schema):
-    # data = fields.List(fields.Str(example="ISO 9001:2015"))
     data = fields.List(fields.Nested(StandardUpdatesSchema))
     control = fields.Nested(RequestControlSchema)
     meta = fields.Nested(MetaSchema)
@@ -27,3 +26,29 @@ class UpdatesSyncResponseSchema(Schema):
     control = fields.Nested(RequestControlSchema)
     meta = fields.Nested(MetaSchema)
     links = fields.List(fields.Nested(LinkSchema))
+
+
+class StandardUpdatesListResponseSchema(Schema):
+    data = fields.List(fields.Nested(StandardUpdatesSchema))
+    control = fields.Nested(RequestControlSchema)
+    meta = fields.Nested(MetaSchema)
+    links = fields.List(fields.Nested(LinkSchema))
+
+
+class StandardUpdatesGetResponseSchema(Schema):
+    data = fields.Nested(StandardUpdatesSchema)
+    control = fields.Nested(RequestControlSchema)
+    meta = fields.Nested(MetaSchema)
+    links = fields.List(fields.Nested(LinkSchema))
+
+
+class StandardUpdatesCreateResponseSchema(StandardUpdatesGetResponseSchema):
+    pass
+
+
+class StandardUpdatesUpdateResponseSchema(StandardUpdatesGetResponseSchema):
+    pass
+
+
+class StandardUpdatesDeleteResponseSchema(StandardUpdatesGetResponseSchema):
+    data = fields.Nested(DeletionSchema)

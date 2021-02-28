@@ -73,6 +73,34 @@ components:
           format: uuid
           type: string
       type: object
+    StandardUpdatesGetResponse:
+      properties:
+        control:
+          $ref: '#/components/schemas/RequestControl'
+        data:
+          $ref: '#/components/schemas/StandardUpdates'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          type: array
+        meta:
+          $ref: '#/components/schemas/Meta'
+      type: object
+    StandardUpdatesListResponse:
+      properties:
+        control:
+          $ref: '#/components/schemas/RequestControl'
+        data:
+          items:
+            $ref: '#/components/schemas/StandardUpdates'
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          type: array
+        meta:
+          $ref: '#/components/schemas/Meta'
+      type: object
     UpdatesCheckResponse:
       properties:
         control:
@@ -128,7 +156,7 @@ paths:
                 $ref: '#/components/schemas/Ping'
           description: Success response
       summary: Ping method
-  /v1/updates_check:
+  /v1/updates/check:
     get:
       responses:
         '200':
@@ -138,7 +166,7 @@ paths:
                 $ref: '#/components/schemas/UpdatesCheckResponse'
           description: Success response
       summary: Check for updates
-  /v1/updates_sync:
+  /v1/updates/sync:
     get:
       responses:
         '200':
@@ -148,6 +176,34 @@ paths:
                 $ref: '#/components/schemas/UpdatesSyncResponse'
           description: Success response
       summary: Synchronize the updates
+  /v1/updates:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardUpdatesListResponse'
+          description: Success response
+      summary: List the updates
+  /v1/updates/{uuid}:
+    get:
+      parameters:
+      - description: Standard Update uuid
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: UUID
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardUpdatesGetResponse'
+          description: Success response
+      summary: Get Standard Update
 servers:
 - description: Production server
   url: https://services.hagatus.com.br/sigo-standard-update-checker
