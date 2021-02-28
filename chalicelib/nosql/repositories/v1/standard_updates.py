@@ -50,7 +50,7 @@ class StandardUpdatesRepository:
                 else:
                     filter_expression.append(key + " = " + val)
                     expression_attributes_names[key] = k
-                    expression_attributes_values[val] = val
+                    expression_attributes_values[val] = v
         #
         #     if startswith is not None:
         #         filter_expression = self._add_to_filter_expression(

@@ -68,10 +68,9 @@ class UpdateCheckerService:
     def execute(self):
         self.logger.info('---------------------------------------------------------------')
         self.logger.info('{} - {} - {}'.format(APP_NAME, APP_VERSION, APP_ARCH_VERSION))
+        self.logger.info('{} - {}'.format('UpdateCheckerService', 'execute'))
         self.logger.info('---------------------------------------------------------------')
         self.logger.info('Starting...')
-
-        result = True
 
         datasources = self.get_datasources()
         if not datasources:

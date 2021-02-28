@@ -32,7 +32,7 @@
     "identification": "ISO 14040:2006",
     "link": "http://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/07/47/74764.html",
     "publication_date": "",
-    "synchronized": "false",
+    "synchronized": false,
     "title": "ISO 14040:2006 - Determination of the silanol group content on the surface of fumed silica — Reaction gas chromatographic method"
   },
   {
@@ -41,7 +41,7 @@
     "identification": "ISO 14001:2014",
     "link": "http://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/07/47/74764.html",
     "publication_date": "",
-    "synchronized": "false",
+    "synchronized": false,
     "title": "ISO 14001:2014 - Determination of the silanol group content on the surface of fumed silica — Reaction gas chromatographic method"
   }
 ]
