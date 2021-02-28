@@ -1,96 +1,143 @@
 # Standard Update Checker Lambda Function
 Micro serviço em Lambda Function responsável por verificar atualizações de normas do sistema SIGO que faz parte do meu TCC do curso Especialização em Arquitetura de Software Distribuído da PUC Minas
 
+<!-- badges -->
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)]()
 
-[comment]: <> (https://github.com/mbertolacci/lorem-rss)
+## Prerequisites
+- Python 3.6
+- Chalice
+- markdown
+- python-dotenv
+- jsonformatter
+- requests
+- pytz
+- apispec
+- apispec-chalice
+- apispec_webframeworks
+- marshmallow
+- markdown
 
-[comment]: <> (https://blog.feedspot.com/iso_rss_feeds/)
+## Features
+- Docker-compose 
+- API Versioning
+- Swagger
+  -  Reference: https://drf-yasg.readthedocs.io/en/stable/custom_spec.html
+- SpecAPI - Swagger tool for Python  
 
-[comment]: <> (https://www.iso.org/contents/shared/rss/latest-standards.rss)
+## Installation
+To execute this project properly, you will need execute the script to create the dynamodb table:
+```
+./bin/aws/cloudformation.sh
+```
 
-[comment]: <> (https://www.iso.org/publication/PUB100208.html)
-
-
-[comment]: <> (Important:)
-
-[comment]: <> (https://github.com/sanic-org/sanic/issues/1323)
-
-[comment]: <> (http://localhost:8002/update_checker)
-
-[comment]: <> (http://localhost:8003/)
-
-
-[comment]: <> (## Running Locally)
-
-[comment]: <> (```)
-
-[comment]: <> ( ./bin/chalice/run-local.sh )
-
-[comment]: <> (```)
-
-[comment]: <> (## Running via Docker)
-
-[comment]: <> (```)
-
-[comment]: <> ( ./bin/docker/build.sh)
-
-[comment]: <> ( ./bin/docker/run.sh )
-
-[comment]: <> (```)
+### Running Locally
+You will need the aws credentials for the profile `sigo-lambdas`:
+```
+cat ~/.aws/credentials
+[sigo-lambdas]
+aws_access_key_id=*********************
+aws_secret_access_key=*********************
+region=sa-east-1
+```
 
 
-[comment]: <> (## Samples)
+To create the `venv` and install the modules execute:
+```
+./bin/venv.sh
+```
+If you don't want create the venv, execute the follow commands:
+```
+./bin/install.sh
+./bin/install-vendor.sh
+```
+#### Running the chalice
+Execute the follow command:
+```
+./bin/chalice/run-local.sh
+```
+### Running via docker
+You will need the aws credentials for the profile `sigo-lambdas`:
+Create a copy of `docker/aws/credentials.example` to `docker/aws/credentials`;
+Edit the file with the credentiais.
+```
+cat ./docker/aws/credentials
+[sigo-lambdas]
+aws_access_key_id=*********************
+aws_secret_access_key=*********************
+region=sa-east-1
+```
 
-[comment]: <> (See the project samples in this folder [here]&#40;/samples&#41;.)
+To execute the build
+```
+./bin/runenv.sh --build
+```
 
-[comment]: <> (## Running tests)
+Execute the follow command:
+```
+./bin/runenv.sh
+```
 
-[comment]: <> (To run the unit tests of the project you can execute the follow command:)
+## Samples
+See the project samples in this folder [here](samples).
 
-[comment]: <> (All tests:)
+## Running tests
+To run the unit tests of the project you can execute the follow command:
 
-[comment]: <> ( ```)
+First you need install the tests requirements:
+ ```
+ ./bin/venv-exec.sh ./bin/tests/install-tests.sh 
+ ```
 
-[comment]: <> ( ./bin/venv-exec.sh ./bin/tests/tests.sh )
+ 
+### Unit tests:
+ ```
+./bin/venv-exec.sh ./bin/tests/unit-tests.sh
+ ``` 
+### Functional tests:
+First install the dynamodb locally:
+```
+./bin/aws/install-dynamodb-local.sh
+```
+Now run the dynamodb locally:
+```
+./bin/aws/run-dynamodb-local.sh --port 9000
+```
+Executing the tests:
+ ```
+./bin/venv-exec.sh ./bin/tests/functional-tests.sh
+```
 
-[comment]: <> ( ``` )
+### All tests:
+Run the dynamodb locally:
+```
+./bin/aws/run-dynamodb-local.sh --port 9000
+``` 
+Executing the tests:
+```
+ ./bin/venv-exec.sh ./bin/tests/tests.sh 
+ ```
 
-[comment]: <> (Unit tests:)
+## Generating coverage reports
+To execute coverage tests you can execute the follow commands:
 
-[comment]: <> ( ```)
+Unit test coverage:
+``` 
+./bin/venv-exec.sh ./bin/tests/unit-coverage.sh
+``` 
+Functional test coverage:
 
-[comment]: <> (./bin/venv-exec.sh ./bin/tests/unit-tests.sh)
+``` 
+./bin/venv-exec.sh ./bin/tests/functional-coverage.sh
+``` 
+> Observation:
 
-[comment]: <> ( ``` )
+The result can be found in the folder `target/functional` and `target/unit`.
 
-[comment]: <> (Integration tests:)
 
-[comment]: <> ( ```)
+## License
+See the license [LICENSE.md](LICENSE.md).
 
-[comment]: <> (./bin/venv-exec.sh ./bin/tests/integration-tests.sh)
-
-[comment]: <> ( ``` )
-
-[comment]: <> (## Generating coverage reports)
-
-[comment]: <> (To execute coverage tests you can execute the follow commands:)
-
-[comment]: <> (Unit test coverage:)
-
-[comment]: <> (``` )
-
-[comment]: <> (./bin/venv-exec.sh ./bin/tests/unit-coverage.sh)
-
-[comment]: <> (``` )
-
-[comment]: <> (Integration test coverage:)
-
-[comment]: <> (``` )
-
-[comment]: <> (./bin/venv-exec.sh ./bin/tests/integration-coverage.sh)
-
-[comment]: <> (``` )
-
-[comment]: <> (> Observation:)
-
-[comment]: <> (The result can be found in the folder `target/integration` and `target/unit`.)
+## Contributions
+* Anderson de Oliveira Contreira [andersoncontreira](https://github.com/andersoncontreira)
+* Allysson Santos [allyssonm](https://github.com/allyssonm) 
