@@ -11,6 +11,7 @@ from chalicelib.helper import open_vendor_file
 from chalicelib.http_helper import CUSTOM_DEFAULT_HEADERS
 from chalicelib.openapi import spec, generate_openapi_yml
 from chalicelib.services.v1.standard_updates_service import StandardUpdatesService
+from chalicelib.services.v1.update_synchronizer_service import UpdateSynchronizerService
 
 register_vendor()
 
@@ -264,7 +265,7 @@ def updates_sync():
                                 schema: UpdatesSyncResponseSchema
 
             """
-    service = UpdateCheckerService()
+    service = UpdateSynchronizerService()
     request = ApiRequest().parse_request(app)
     response = ApiResponse(request)
     status_code = 200
@@ -275,13 +276,11 @@ def updates_sync():
 
     except Exception as err:
         logger.error(err)
-
+        status_code = 501
         if isinstance(err, ApiException):
             api_ex = err
-            status_code = 404
         else:
-            api_ex = ApiException(MessagesEnum.LIST_ERROR)
-            status_code = 500
+            api_ex = ApiException(MessagesEnum.METHOD_NOT_IMPLEMENTED_ERROR)
 
         response.set_exception(api_ex)
 
@@ -289,7 +288,7 @@ def updates_sync():
 
 
 @app.schedule('rate(1 day)')
-def every_hour(event):
+def every_day(event):
     service = UpdateCheckerService()
     result = service.execute()
     body = {
